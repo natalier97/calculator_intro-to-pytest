@@ -1,4 +1,5 @@
 import calculator
+import pytest
 
 def test_add():
     assert calculator.calculate(2, 3, "add") == 5
@@ -9,7 +10,9 @@ def test_multiply():
 def test_divide():
     assert calculator.calculate(6, 2, "divide") == 3
 def test_divide_zero():
-    assert calculator.calculate(3, 0, "divide") == "Cannot divide by zero"
+    with pytest.raises(ValueError):
+        calculator.calculate(3, 0, "divide")
+    # assert calculator.calculate(3, 0, "divide") == "Cannot divide by zero"
 
 # Add more functional tests for subtract, multiply, and divide
 
